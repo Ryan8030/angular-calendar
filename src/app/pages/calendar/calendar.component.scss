@@ -1,0 +1,184 @@
+.upper {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search {
+  width: 100%;
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+
+  > div:first-child {
+    margin-right: 20px;
+  }
+
+  > div:last-child {
+    color: #7c8db5;
+  }
+
+}
+
+.profile {
+  width: 66px;
+  height: 62px;
+  margin-left: 28px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+
+.middle {
+  width: 100%;
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.paginator {
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Fa_Num_Bold, sans-serif;
+  font-size: 18px;
+  margin-bottom: 18px;
+  color: #25396f;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > div:nth-child(2) {
+      margin: 0 20px;
+    }
+
+  }
+
+  .prev {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    background-color: #3699ff;
+    border-radius: 10px;
+
+    ::ng-deep svg {
+      transform: scaleX(-1);
+
+      g [fill] {
+        fill: white;
+        transition: fill 180ms;
+      }
+
+    }
+
+  }
+
+  .next {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    background-color: #3699ff;
+    border-radius: 10px;
+
+    ::ng-deep svg g [fill] {
+        fill: white;
+        transition: fill 180ms;
+
+    }
+
+  }
+
+}
+
+.weekdays {
+  width: 100%;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  border-top: 1px solid #e9f0f9;
+  padding-top: 20px;
+  color: #7c8db5;
+  font-family: IRANSansX_Bold, sans-serif;
+
+  span {
+    letter-spacing: 3px;
+    font-size: 14px;
+  }
+
+}
+
+.calendar {
+  width: 100%;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  background-color: white;
+  padding: 34px;
+  border-radius: 10px;
+
+  > div {
+
+    > div {
+      border: 1px solid #e9f0f9;
+      border-radius: 10px;
+      padding: 16px;
+
+      > div:first-child {
+        font-family: 'Trebuchet MS', sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #25396f;
+        margin-bottom: 6px;
+      }
+
+      > div:last-child {
+        color: #0062ff;
+      }
+
+    }
+
+  }
+
+  .tasked {
+    background-color: #f8fbff;
+  }
+
+  .disabled {
+    background-color: unset !important;
+
+    * {
+      color: #7c8db5 !important;
+    }
+
+  }
+
+}
+
+.error {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  > div {
+    width: 300px;
+    padding-top: 40px;
+  }
+
+}
+
+// utils ---------------------------------------------------------------------------------------------------------------
+
+.container {
+  width: 1300px;
+}
