@@ -4,9 +4,13 @@
     <div class="upper">
 
       <div class="search">
-        <div [inlineSVG]="'./assets/svg/icons/General/gen004.svg'"></div>
-        <div>
-          Search tasks projects teams ...
+        <div (click)="search()" [inlineSVG]="'./assets/svg/icons/General/gen004.svg'"></div>
+        <div class="w-100">
+          <input
+            type="text"
+            placeholder="شماره موبایل خود را وارد نمایید ..."
+            [(ngModel)]="phone"
+          >
         </div>
       </div>
 
@@ -28,19 +32,19 @@
 
       <div class="weekdays">
 
-        <span>SAT</span>
+        <span>شنبه</span>
 
-        <span>SUN</span>
+        <span>یکشنبه</span>
 
-        <span>MON</span>
+        <span>دوشنبه</span>
 
-        <span>TUE</span>
+        <span>سه شنبه</span>
 
-        <span>WED</span>
+        <span>چهارشنبه</span>
 
-        <span>THU</span>
+        <span>پنجشنبه</span>
 
-        <span>FRI</span>
+        <span>جمعه</span>
 
       </div>
 
@@ -53,9 +57,9 @@
         <div>
 
           <ng-container *ngIf="item.date !== ''">
-            <div [class.disabled]="!item.active" [class.tasked]="item.calendar.length !== 0">
+            <div (click)="item.active ? openDateEvents(item.calendar): null" [class.disabled]="!item.active" [class.tasked]="item.calendar.length !== 0">
               <div>{{item.date | localDate}}</div>
-              <div>{{item.calendar.length}} tasks</div>
+              <div>{{item.calendar.length}} رویداد</div>
             </div>
           </ng-container>
 
@@ -79,7 +83,7 @@
     <div [inlineSVG]="'/assets/svg/errors/Mobile Marketing-pana.svg'"></div>
 
     <div>
-      <div>A backend problem!</div>
+      <div>با جستجوی شماره شروع کنید ...</div>
     </div>
 
   </div>

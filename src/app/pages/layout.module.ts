@@ -7,19 +7,23 @@ import {AsideComponent} from "../layout/components/aside/aside.component";
 import {InlineSVGModule} from "ng-inline-svg-2";
 import { CalendarComponent } from './calendar/calendar.component';
 import {PipesModule} from "../core/pipes/pipes.module";
+import { CalendarEventDetailsComponent } from './calendar/components/calendar-event-details/calendar-event-details.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     LayoutComponent,
     AsideComponent,
-    CalendarComponent
+    CalendarComponent,
+    CalendarEventDetailsComponent
   ],
-  imports: [
-    CommonModule,
-    PagesRoutingModule,
-    InlineSVGModule,
-    PipesModule
-  ]
+    imports: [
+        CommonModule,
+        PagesRoutingModule,
+        InlineSVGModule,
+        PipesModule,
+        FormsModule
+    ]
 })
 export class LayoutModule { }

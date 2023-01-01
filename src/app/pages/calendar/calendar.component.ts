@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../services/api/api.service";
 import {CalendarModel} from "../../models/calendar.model";
 import {BehaviorSubject} from "rxjs";
+import {CalendarEventDetailsComponent} from "./components/calendar-event-details/calendar-event-details.component";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-calendar',
@@ -11,6 +13,7 @@ import {BehaviorSubject} from "rxjs";
 export class CalendarComponent implements OnInit {
 
   private dates: any = [];
+  phone = '';
 
   paginatorDate: string = '';
 
@@ -27,21 +30,23 @@ export class CalendarComponent implements OnInit {
   }
 
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit(): void {
     this.paginatorDate = `${this.selectedDate.toLocaleString('fa', {month: 'long'})} ${this.selectedDate.toLocaleString('fa', {year: 'numeric'})}`;
-    this.fetch(new Date());
   }
 
-
+  // calendar ----------------------------------------------------------------------------------------------------------
 
   fetch(date: Date) {
 
     this.fetchCalendar(date);
 
     const body = {
-      "strMessageGather": "09126386620"
+      "strMessageGather": this.phone
     };
     this.apiService.getCalendar(body).subscribe({
       next: response => {
@@ -92,10 +97,6 @@ export class CalendarComponent implements OnInit {
 
   }
 
-
-
-  // private -----------------------------------------------------------------------------------------------------------
-
   private fetchCalendar(date: Date) {
 
     this.dates = []
@@ -141,6 +142,16 @@ export class CalendarComponent implements OnInit {
       })
     }
 
+  }
+
+  // action ------------------------------------------------------------------------------------------------------------
+  openDateEvents(data: CalendarModel[]) {
+    const modalRef = this.modalService.open(CalendarEventDetailsComponent);
+    modalRef.componentInstance.data = data;
+  }
+
+  search() {
+    this.phone !== ''? this.fetch(new Date()): this.items$ = undefined;
   }
 
 }

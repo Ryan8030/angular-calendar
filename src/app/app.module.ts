@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {SplashScreenModule} from "./core/splash-screen/splash-screen.module";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     SplashScreenModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

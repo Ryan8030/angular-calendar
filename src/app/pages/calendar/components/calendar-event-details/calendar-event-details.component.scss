@@ -1,0 +1,33 @@
+.card-body {
+  padding: 20px;
+
+  .event {
+    padding: 20px;
+    border: 2px dashed #bac1c8;
+    border-radius: 4px;
+    margin-bottom: 20px;
+
+  }
+
+  h4 {
+    font-size: 16px;
+    font-family: Fa_Num, sans-serif;
+  }
+
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > div {
+    width: 50%;
+
+    > div:last-child {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+  }
+}

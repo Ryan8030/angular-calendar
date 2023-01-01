@@ -1,0 +1,30 @@
+<ng-container *ngIf="data.length !== 0;else error">
+
+  <div class="card">
+    <div class="card-body">
+      <div class="event" *ngFor="let event of data">
+        <h4>عنوان: {{event.strCalenderSubject_strComment}}</h4>
+        <h4>تاریخ: {{event.strDate}}</h4>
+        <h4>شروع جلسه: {{event.strTime}}</h4>
+        <p>{{event.strComment}}</p>
+      </div>
+    </div>
+  </div>
+
+</ng-container>
+
+<!-- start::error-template -->
+<ng-template #error>
+
+  <div class="error">
+
+    <div>
+      <div [inlineSVG]="'/assets/svg/errors/Mobile Marketing-pana.svg'"></div>
+
+      <div>رویدادی برای این تاریخ موجود نیست!</div>
+    </div>
+
+  </div>
+
+</ng-template>
+<!-- end::error-template -->

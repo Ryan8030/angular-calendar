@@ -13,18 +13,10 @@ enum options {
 })
 export class DatePipe implements PipeTransform {
 
-  transform(value: string, format?: string): unknown {
-    // if (format) {
-    //   switch (format) {
-    //     case options.full:
-    //       return new Date(value).toLocaleString('fa-IR').replace('،', ' - ').slice(0, -3).split(' - ').reverse().join(' - ');
-    //     case options.date:
-    //       return new Date(value).toLocaleDateString('fa-IR');
-    //   }
-    // }
-    // return new Date(value).toLocaleDateString('fa-IR');
+  transform(value: string, format?: number): unknown {
 
-    return value.split('/')[2]
+    const handle = value.split('/')[2]
+    return handle.split('')[0] === '0'? handle.split('')[1]: handle
 
   }
 
