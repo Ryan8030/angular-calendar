@@ -18,57 +18,61 @@
 
     </div>
 
-    <div class="middle">
+    <ng-container *ngIf="items$ | async;else error">
 
-      <div class="paginator">
+      <div class="middle">
 
-        <div>
-          <div style="display: inline-block" (click)="previousMonth()" class="prev" [inlineSVG]="'/assets/svg/icons/Media/Play.svg'"></div>
-          <div style="display: inline-block">{{paginatorDate}}</div>
-          <div style="display: inline-block" (click)="nextMonth()" class="next" [inlineSVG]="'/assets/svg/icons/Media/Play.svg'"></div>
+        <div class="paginator">
+
+          <div>
+            <div style="display: inline-block" (click)="previousMonth()" class="prev" [inlineSVG]="'/assets/svg/icons/Media/Play.svg'"></div>
+            <div style="display: inline-block">{{paginatorDate}}</div>
+            <div style="display: inline-block" (click)="nextMonth()" class="next" [inlineSVG]="'/assets/svg/icons/Media/Play.svg'"></div>
+          </div>
+
+        </div>
+
+        <div class="weekdays">
+
+          <span>شنبه</span>
+
+          <span>یکشنبه</span>
+
+          <span>دوشنبه</span>
+
+          <span>سه شنبه</span>
+
+          <span>چهارشنبه</span>
+
+          <span>پنجشنبه</span>
+
+          <span>جمعه</span>
+
         </div>
 
       </div>
 
-      <div class="weekdays">
+      <div class="calendar">
 
-        <span>شنبه</span>
+        <ng-container *ngFor="let item of items$ | async">
 
-        <span>یکشنبه</span>
+          <div>
 
-        <span>دوشنبه</span>
+            <ng-container *ngIf="item.date !== ''">
+              <div (click)="item.active ? openDateEvents(item.calendar): null" [class.disabled]="!item.active" [class.tasked]="item.calendar.length !== 0">
+                <div>{{item.date | localDate}}</div>
+                <div>{{item.calendar.length}} رویداد</div>
+              </div>
+            </ng-container>
 
-        <span>سه شنبه</span>
+          </div>
 
-        <span>چهارشنبه</span>
+        </ng-container>
 
-        <span>پنجشنبه</span>
-
-        <span>جمعه</span>
 
       </div>
 
-    </div>
-
-    <div *ngIf="items$ | async;else error" class="calendar">
-
-      <ng-container *ngFor="let item of items$ | async">
-
-        <div>
-
-          <ng-container *ngIf="item.date !== ''">
-            <div (click)="item.active ? openDateEvents(item.calendar): null" [class.disabled]="!item.active" [class.tasked]="item.calendar.length !== 0">
-              <div>{{item.date | localDate}}</div>
-              <div>{{item.calendar.length}} رویداد</div>
-            </div>
-          </ng-container>
-
-        </div>
-
-      </ng-container>
-
-
-    </div>
+    </ng-container>
 
   </div>
 
